@@ -1,13 +1,17 @@
 package dio.TaskBoard_Java;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import br.com.dio.persistence.migration.MigrationStrategy;
 
-@SpringBootApplication
+import java.sql.SQLException;
+
+import static br.com.dio.persistence.config.ConnectionConfig.getConnection;
+
 public class TaskBoardJavaApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(TaskBoardJavaApplication.class, args);
-	}
+    public static void main(String[] args) throws SQLException {
+        try(var connection = getConnection()){
+            new MigrationStrategy(connection).executeMigration();
+        }
+    }
 
 }
