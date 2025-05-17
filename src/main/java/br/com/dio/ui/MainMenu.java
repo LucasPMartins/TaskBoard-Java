@@ -16,16 +16,16 @@ import static br.com.dio.persistence.entity.BoardColumnKindEnum.*;
 
 public class MainMenu {
 
-    private final Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in).useDelimiter("\n");
 
     public void execute() throws SQLException {
         System.out.println("Bem vindo ao Gerenciador de Boards, escolha a opção desejada:");
         var option = -1;
         while (true) {
-            System.out.println("1 - Criar um novo board.");
-            System.out.println("2 - Selecionar um board existente.");
-            System.out.println("3 - Excluir um board.");
-            System.out.println("4 - Sair.");
+            System.out.println("1 - Criar um novo board");
+            System.out.println("2 - Selecionar um board existente");
+            System.out.println("3 - Excluir um board");
+            System.out.println("4 - Sair");
             option = scanner.nextInt();
             switch (option) {
                 case 1 -> createBoard();
